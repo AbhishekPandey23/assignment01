@@ -1,6 +1,6 @@
 'use client';
 import { Button, Typography, Container, Box } from '@mui/material';
-import { signInWithPopup } from 'firebase/auth';
+import { signInWithPopup, signInWithRedirect } from 'firebase/auth';
 import { auth, provider } from '../lib/firebase';
 import React from 'react';
 import { CircleUserRound } from 'lucide-react';
@@ -10,7 +10,7 @@ export default function Home() {
 
   const handleGoogleSignIn = async () => {
     try {
-      const result = await signInWithPopup(auth, provider);
+      const result = await signInWithRedirect(auth, provider);
       setUser(result.user);
     } catch (error) {
       console.error('Google Sign-In Error:', error);
